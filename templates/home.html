@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block title %}Home{% endblock title %}
+
 {% block content %}
 {% if user.is_authenticated %}
 Hi {{ user.username }}! You are {{ user.age }} years old.
 <form action="{% url "logout" %}" method='post'>
     {% csrf_token %}
-    <button type='submit'>Log Out</button>
+    <button type="submit" class="btn btn-outline-secondary">Log Out</button>
 </form>
+<br/>
+<p><a class="btn btn-primary" role="button" href="{% url "article_list" %}">View all articles</a></p>
 {% else %}
 <p>You are not logged in</p>
 <a href="{% url 'login' %}">Log In</a> |
@@ -15,6 +18,7 @@ Hi {{ user.username }}! You are {{ user.age }} years old.
 {% endif %}
 {% endblock content %}
 
+{% comment %} Forma antigua de realizar Sign up {% endcomment %}
 {% comment %} {% extends "base.html" %}
 
 {% block title %}Home{% endblock title %}

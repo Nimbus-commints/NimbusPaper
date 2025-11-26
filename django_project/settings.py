@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "accounts.apps.AccountsConfig",  # added
+    # THIRD PARTY
+    "crispy_forms",  # added
+    "crispy_bootstrap5",  # added
+    # LOCAL
+    "accounts",  # added
+    "pages",  # added
+    "articles",
 ]
 
 MIDDLEWARE = [
@@ -105,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Lima"
 
 USE_I18N = True
 
@@ -127,4 +133,19 @@ AUTH_USER_MODEL = "accounts.CustomUser"  # new
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
-CSRF_COOKIE_DOMAIN = "None"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"  # added
+CRISPY_TEMPLATE_PACK = "bootstrap5"  # added
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# added when using smtp
+DEFAULT_FROM_EMAIL = "unnamed4896@gmail.com"
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = (
+    "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"
+)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
